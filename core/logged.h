@@ -4,4 +4,10 @@
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl2.h"
 
-void Login();
+#ifndef LOGGED
+#define LOGGED
+namespace Logged
+{
+	void ShowStuff();
+}
+#endif

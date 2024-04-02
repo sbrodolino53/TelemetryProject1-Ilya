@@ -9,6 +9,8 @@
 #include "imgui/backends/imgui_impl_opengl2.h"
 
 #include "app.h"
+#include "state.h"
+#include "logged.h"
 
 GLFWwindow* window;
 
@@ -44,11 +46,14 @@ int main(){
         ImGui::NewFrame();
 
         // renders tabs/buttons/...
-        app_render();
-
+        //app_render();
+        if (State::GetState() != 0)
+            Logged::ShowStuff();
+        else
+            Login();
         render(window, clear_color);
     }
-
+    std::cout << State::GetState() << std::endl;
     std::cout << "Shutdown" << std::endl;
     ImGui_ImplOpenGL2_Shutdown();
     ImGui_ImplGlfw_Shutdown();
